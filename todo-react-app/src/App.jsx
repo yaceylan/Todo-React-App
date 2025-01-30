@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import TodoForm from './components/todo-form'; 
+import TodoForm from './components/todo-form';
 import TodoList from './components/todo-list';
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -27,7 +27,7 @@ function App() {
   };
 
   return (
-    
+
     <div>
       <h1>Todo-App</h1>
       <TodoForm onTodoAdd={handleTodoAdd} />
@@ -42,5 +42,5 @@ function App() {
 
 export default App;
 
- 
-    
+
+
