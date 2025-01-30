@@ -1,9 +1,9 @@
-import { useState } from 'react'
-import TodoForm from './components/todo-form';
-import TodoList from './components/todo-list';
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react"
+import TodoForm from "./components/todo-form"
+import TodoList from "./components/todo-list"
+import reactLogo from "./assets/react.svg"
+import viteLogo from "/vite.svg"
+import "./App.css"
 
 function App() {
   const [count, setCount] = useState(0)

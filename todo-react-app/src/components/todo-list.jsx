@@ -1,6 +1,6 @@
-import React from 'react';
-import TodoItem from './TodoItem';
-import TodoList from './TodoList'; 
+import React from "react";
+import TodoItem from "./TodoItem";
+import TodoList from "./TodoList";
 
 
 function TodoList({ todos, onTodoToggle, onTodoDelete }) { //  Funktion, die aufgerufen wird, wenn der Benutzer den Status eines Todos ändert (
