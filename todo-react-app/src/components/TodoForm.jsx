@@ -1,35 +1,32 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
-function TodoForm({addTodo, todos}) {
-    const [input, setInput] = useState('');
+function TodoForm({ addTodo }) {
+  const [todoText, setTodoText] = useState("");
 
-     const handleAddTodo = (e) => {
-        e.preventDefault();
-        addTodo(input);
-        setInput('');
-     }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    addTodo(todoText);
+    setTodoText(""); // Eingabefeld leeren
+  };
 
-    return (
-        <div className="mt-4 flex justify-between">
-            <form onSubmit={handleAddTodo}>
-          <input
-            type="text"
-            name="todo"
-            placeholder="Neues Todo erstellen"
-            id="todo-item"
-            className="mr-3 w-full border p-2"
-            value={input}
-            onChange={(e)=>setInput(e.target.value)}
-            />
-          <button
-            type="submit"
-            className="bg-[#0093E9] px-4 py-2 font-semibold text-white">
-            {/* {todos[0].text} */}
-            speichern
-          </button>
-            </form>
-        </div>
-    )
+  return (
+    <form onSubmit={handleSubmit} className="mt-4 flex justify-between">
+      <input
+        type="text"
+        value={todoText}
+        onChange={(e) => setTodoText(e.target.value)}
+        name="todo"
+        placeholder="create new todo"
+        id="todo-item"
+        className="mr-3 w-full border p-2"
+      />
+      <button
+        type="submit"
+        className="bg-[#0093E9] px-4 py-2 font-semibold text-white"
+      >
+      </button>
+    </form>
+  );
 }
 
 export default TodoForm;
