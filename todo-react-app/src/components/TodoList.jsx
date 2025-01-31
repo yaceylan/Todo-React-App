@@ -18,7 +18,19 @@ function TodoList() {
     }
     setTodos([...todos, newTodo]);
     console.log("Todos:", todos);
-}
+};
+
+const toggleComplete = (id) => {
+  setTodos(
+    todos.map((todo) =>
+      todo.id === id ? { ...todo, completed: !todo.completed } : todo
+    )
+  );
+};
+
+const deleteTodo = (id) => {
+  setTodos(todos.filter((todo) => todo.id !== id));
+};
 
   return (
     <div className="container mx-auto p-4">
@@ -27,39 +39,31 @@ function TodoList() {
           className="my-6 bg-gradient-to-r from-[#4158D0] to-[#C850C0] bg-clip-text text-center text-3xl font-bold text-transparent">
          
         </h3>
-        { <div className="mt-4 flex justify-between">
-          <input
-            type="text"
-            name="todo"
-            placeholder="create new todo"
-            id="todo-item"
-            className="mr-3 w-full border p-2" />
-          <button
-            type="submit"
-            className="bg-[#0093E9] px-4 py-2 font-semibold text-white">
-            
-          </button>
-        </div> }
-        <TodoForm addTodo={addTodo} todos={todos}/>
+        <TodoForm addTodo={addTodo} /> {/* TodoForm übergibt den Text an addTodo */}
       </header>
       <main className="bg-white p-4">
         <ul>
-            {todos.map((todo) => (
-                <li key={todo.id} className="flex items-center justify-start border-t border-gray-300 py-2">
-                    <TodoItem todo={todo}/>
-                </li>
-            ))}
+          {todos.map((todo) => (
+            <li
+              key={todo.id}
+              className="flex items-center justify-start border-t border-gray-300 py-2"
+            >
+              <TodoItem
+                todo={todo}
+                onToggleComplete={() => toggleComplete(todo.id)} // Übergabe der Toggle-Funktion
+                onDelete={() => deleteTodo(todo.id)}        // Übergabe der Delete-Funktion
+              />
+            </li>
+          ))}
         </ul>
       </main>
       <footer>
-        <p
-          className="rounded-b-lg bg-white p-4 text-center text-sm text-gray-700 shadow-md">
+        <p className="rounded-b-lg bg-white p-4 text-center text-sm text-gray-700 shadow-md">
           © 2024 Todo App -
         </p>
       </footer>
     </div>
-    )
+  );
 }
 
 export default TodoList;
-    
