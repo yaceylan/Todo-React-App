@@ -1,24 +1,24 @@
-function TodoItem({ todo }) {
+import React from "react";
+
+function TodoItem({ todo, onToggle, onRemove }) {
   return (
-    <>
-      <input
-        type="checkbox"
-        name="done"
-        id=""
-        className="size-5 cursor-pointer rounded border-slate-300 border-b-gray-500 transition-all checked:border-blue-600 checked:bg-blue-400 hover:shadow-md" />
-      <span className="mx-4"
-      >{todo.text}</span
-      >
-      <div className="ml-auto flex space-x-2">
-        <button className="bg-[#29b83a] px-4 py-2 text-white">
-          bearbeiten
-        </button>
-        <button className="bg-[#C850C0] px-4 py-2 text-white">löschen</button>
-      </div>
-
-    </>
-
-  )
+    <li className="flex items-center justify-between border-b py-2">
+      <label className="flex items-center gap-2">
+        <input
+          type="checkbox"
+          checked={todo.completed}
+          onChange={() => onToggle(todo.id)}
+          className="cursor-pointer"
+        />
+        <span className={todo.completed ? "line-through text-gray-500" : ""}>
+          {todo.text}
+        </span>
+      </label>
+      <button onClick={() => onRemove(todo.id)} className="text-red-500 font-bold hover:text-red-700 transition duration-200">
+        Löschen
+      </button>
+    </li>
+  );
 }
 
 export default TodoItem;
